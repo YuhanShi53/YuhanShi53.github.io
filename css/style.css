@@ -1,96 +1,4 @@
 @charset "UTF-8";
-/*
-
-Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-license.org/
-
-*/
-.hljs, figure.highlight {
-  display: block;
-  overflow-x: auto;
-  padding: 0.5em;
-  background: #23241f; }
-
-.hljs, figure.highlight,
-.hljs-tag,
-figure.highlight .tag,
-.hljs-subst {
-  color: #f8f8f2; }
-
-.hljs-strong, figure.highlight .strong,
-.hljs-emphasis,
-figure.highlight .emphasis {
-  color: #a8a8a2; }
-
-.hljs-bullet, figure.highlight .bullet,
-.hljs-quote,
-figure.highlight .quote,
-.hljs-number,
-figure.highlight .number,
-.hljs-regexp,
-figure.highlight .regexp,
-.hljs-literal,
-figure.highlight .literal,
-.hljs-link,
-figure.highlight .link {
-  color: #ae81ff; }
-
-.hljs-code,
-.hljs-title,
-figure.highlight .title,
-.hljs-section,
-figure.highlight .section,
-.hljs-selector-class {
-  color: #a6e22e; }
-
-.hljs-strong, figure.highlight .strong {
-  font-weight: bold; }
-
-
-.hljs-emphasis,
-figure.highlight .emphasis {
-  font-style: italic; }
-
-.hljs-keyword, figure.highlight .keyword,
-.hljs-selector-tag,
-.hljs-name,
-figure.highlight .name,
-.hljs-attr {
-  color: #f92672; }
-
-.hljs-symbol, figure.highlight .symbol,
-.hljs-attribute,
-figure.highlight .attribute {
-  color: #66d9ef; }
-
-.hljs-params, figure.highlight .params,
-.hljs-class .hljs-title,
-.hljs-class figure.highlight .title,
-figure.highlight .hljs-class .title {
-  color: #f8f8f2; }
-
-.hljs-string, figure.highlight .string,
-.hljs-type,
-figure.highlight .type,
-.hljs-built_in,
-figure.highlight .built_in,
-.hljs-builtin-name,
-.hljs-selector-id,
-.hljs-selector-attr,
-.hljs-selector-pseudo,
-.hljs-addition,
-figure.highlight .addition,
-.hljs-variable,
-figure.highlight .variable,
-.hljs-template-variable {
-  color: #e6db74; }
-
-.hljs-comment, figure.highlight .comment,
-.hljs-deletion,
-figure.highlight .deletion,
-.hljs-meta,
-figure.highlight .meta {
-  color: #75715e; }
-
 body, button, input, select, textarea {
   font-family: "Ovo", "Georgia", "STZhongsong", "Microsoft YaHei", serif; }
 
@@ -554,3 +462,176 @@ figure.highlight {
 .ins-section .ins-search-item:hover .ins-search-preview,
 .ins-section .ins-search-item.active .ins-search-preview {
   color: #fff; }
+
+/*
+
+Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-license.org/
+
+*/
+.hljs, figure.highlight {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  background: #23241f; }
+
+.hljs, figure.highlight,
+.hljs-tag,
+figure.highlight .tag,
+.hljs-subst {
+  color: #f8f8f2; }
+
+.hljs-strong, figure.highlight .strong,
+.hljs-emphasis,
+figure.highlight .emphasis {
+  color: #a8a8a2; }
+
+.hljs-bullet, figure.highlight .bullet,
+.hljs-quote,
+figure.highlight .quote,
+.hljs-number,
+figure.highlight .number,
+.hljs-regexp,
+figure.highlight .regexp,
+.hljs-literal,
+figure.highlight .literal,
+.hljs-link,
+figure.highlight .link {
+  color: #ae81ff; }
+
+.hljs-code,
+.hljs-title,
+figure.highlight .title,
+.hljs-section,
+figure.highlight .section,
+.hljs-selector-class {
+  color: #a6e22e; }
+
+.hljs-strong, figure.highlight .strong {
+  font-weight: bold; }
+
+
+.hljs-emphasis,
+figure.highlight .emphasis {
+  font-style: italic; }
+
+.hljs-keyword, figure.highlight .keyword,
+.hljs-selector-tag,
+.hljs-name,
+figure.highlight .name,
+.hljs-attr {
+  color: #f92672; }
+
+.hljs-symbol, figure.highlight .symbol,
+.hljs-attribute,
+figure.highlight .attribute {
+  color: #66d9ef; }
+
+.hljs-params, figure.highlight .params,
+.hljs-class .hljs-title,
+.hljs-class figure.highlight .title,
+figure.highlight .hljs-class .title {
+  color: #f8f8f2; }
+
+.hljs-string, figure.highlight .string,
+.hljs-type,
+figure.highlight .type,
+.hljs-built_in,
+figure.highlight .built_in,
+.hljs-builtin-name,
+.hljs-selector-id,
+.hljs-selector-attr,
+.hljs-selector-pseudo,
+.hljs-addition,
+figure.highlight .addition,
+.hljs-variable,
+figure.highlight .variable,
+.hljs-template-variable {
+  color: #e6db74; }
+
+.hljs-comment, figure.highlight .comment,
+.hljs-deletion,
+figure.highlight .deletion,
+.hljs-meta,
+figure.highlight .meta {
+  color: #75715e; }
+
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Tomorrow Comment */
+.hljs-comment, figure.highlight .comment,
+.hljs-quote,
+figure.highlight .quote {
+  color: #8e908c; }
+
+/* Tomorrow Red */
+
+.hljs-variable,
+figure.highlight .variable,
+.hljs-template-variable,
+.hljs-tag,
+figure.highlight .tag,
+.hljs-name,
+figure.highlight .name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+figure.highlight .regexp,
+.hljs-deletion,
+figure.highlight .deletion {
+  color: #c82829; }
+
+/* Tomorrow Orange */
+
+.hljs-number,
+figure.highlight .number,
+.hljs-built_in,
+figure.highlight .built_in,
+.hljs-builtin-name,
+.hljs-literal,
+figure.highlight .literal,
+.hljs-type,
+figure.highlight .type, .hljs-params, figure.highlight .params,
+.hljs-meta,
+figure.highlight .meta,
+.hljs-link,
+figure.highlight .link {
+  color: #f5871f; }
+
+/* Tomorrow Yellow */
+
+.hljs-attribute,
+figure.highlight .attribute {
+  color: #eab700; }
+
+/* Tomorrow Green */
+.hljs-string, figure.highlight .string, .hljs-symbol, figure.highlight .symbol, .hljs-bullet, figure.highlight .bullet,
+.hljs-addition,
+figure.highlight .addition {
+  color: #718c00; }
+
+/* Tomorrow Blue */
+
+.hljs-title,
+figure.highlight .title,
+.hljs-section,
+figure.highlight .section {
+  color: #4271ae; }
+
+/* Tomorrow Purple */
+.hljs-keyword, figure.highlight .keyword,
+.hljs-selector-tag {
+  color: #8959a8; }
+
+.hljs, figure.highlight {
+  display: block;
+  overflow-x: auto;
+  background: white;
+  color: #4d4d4c;
+  padding: 0.5em; }
+
+
+.hljs-emphasis,
+figure.highlight .emphasis {
+  font-style: italic; }
+
+.hljs-strong, figure.highlight .strong {
+  font-weight: bold; }

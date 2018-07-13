@@ -26,6 +26,9 @@
 <link rel="stylesheet" href="/css/style.css">
 <script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
 
+
+
+
 </head>
 <body>
     
@@ -119,7 +122,7 @@
 </ol>
 </blockquote>
 <p>We also need a <code>globalMax</code> to store the global maximum value. In this case, although we take <code>localMax[i-1]+nums[i]</code> as local maximum which is smaller than <code>localMax[i-1]</code> when <code>localMax[i-1]&gt;0, nums[i]&lt;0</code>, we are still able to keep the localMax[i-1] with the existence of <code>globalMax</code>. With these two variables, we can get maximum of subarray with O(n) time complexity and O(1) space complexity.</p>
-<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><code class="python"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><code class="Python"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span>
     <span class="function"><span class="keyword">def</span> <span class="title">maxSubArray</span><span class="params">(self, nums)</span>:</span>
         <span class="string">"""</span>
 <span class="string">        :type nums: List[int]</span>
