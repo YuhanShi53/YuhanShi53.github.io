@@ -26,6 +26,9 @@
 <link rel="stylesheet" href="/css/style.css">
 <script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
 
+<!-- <link rel="stylesheet" href="//cdn.bootcss.com/highlight.js/9.2.0/styles/github.min.css">
+<script src="//cdn.bootcss.com/highlight.js/9.2.0/highlight.min.js"></script> -->
+
 
 
 
@@ -115,37 +118,9 @@
     <div class="article-entry is-size-6-mobile" itemprop="articleBody">
     
         <h3 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h3><p>Given two sorted integer arrays nums1 and nums2, merge nums2 into nums1 as one sorted array.<br><strong>Note:</strong><br>The number of elements initialized in nums1 and nums2 are m and n respectively.<br>You may assume that nums1 has enough space (size that is greater or equal to m + n) to hold additional elements from nums2.</p>
-<p><strong>Example:</strong></p>
-<blockquote>
-<p>Input:<br>nums1 = [1,2,3,0,0,0], m = 3<br>nums2 = [2,5,6],       n = 3<br>Output: [1,2,2,3,5,6]</p>
-</blockquote>
-<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>由于两个数组都已经排序，因此可以从后往前比较两个数组，将较大的元素插入未排序的部分。若数组1先排完，则说明数组2的剩余元素均比数组1小，所以将剩余部分填充完即可；若数组2先排完，则说明数组1剩余元素均小于数组2，由于合并是在数组1上原地完成，因此不需要再操作。</p>
-<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><code class="python"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span>
-    <span class="function"><span class="keyword">def</span> <span class="title">merge</span><span class="params">(self, nums1, m, nums2, n)</span>:</span>
-        <span class="string">"""</span>
-<span class="string">        :type nums1: List[int]</span>
-<span class="string">        :type m: int</span>
-<span class="string">        :type nums2: List[int]</span>
-<span class="string">        :type n: int</span>
-<span class="string">        :rtype: void Do not return anything, modify nums1 in-place instead.</span>
-<span class="string">        """</span>
-        end = m+n<span class="number">-1</span>
-        m -= <span class="number">1</span>
-        n -= <span class="number">1</span>
-        <span class="keyword">while</span> end &gt;= <span class="number">0</span> <span class="keyword">and</span> m &gt;= <span class="number">0</span> <span class="keyword">and</span> n &gt;= <span class="number">0</span>:
-            <span class="keyword">if</span> nums1[m] &gt; nums2[n]:
-                nums1[end] = nums1[m]
-                m -= <span class="number">1</span>
-            <span class="keyword">else</span>:
-                nums1[end] = nums2[n]
-                n -= <span class="number">1</span>
-            end -= <span class="number">1</span>
-        <span class="keyword">while</span> n &gt;= <span class="number">0</span>:
-            nums1[end] = nums2[n]
-            n -= <span class="number">1</span>
-            end -= <span class="number">1</span>
-</code></pre>
-
+        <p class="article-more-link">
+            <a href="/2018/07/13/Merge-sorted-array/#more">Read More</a>
+        </p>
     
     </div>
     
