@@ -1114,7 +1114,7 @@ a.article-title:hover {
   float: left;
 }
 .article-share-link {
-  float: left;
+  float: right;
   cursor: pointer;
   margin-left: 20px;
 }
