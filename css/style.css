@@ -1103,7 +1103,6 @@ a.article-title:hover {
 }
 .article-comment-link {
   float: right;
-  width: 100px;
 }
 .article-comment-link:before {
   content: "\f075";
@@ -1112,7 +1111,7 @@ a.article-title:hover {
   padding-right: 5px;
 }
 .share-container {
-  float: right;
+  float: left;
 }
 .article-share-link {
   float: left;
