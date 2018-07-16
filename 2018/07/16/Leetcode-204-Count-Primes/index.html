@@ -5,19 +5,19 @@
     
     <title>Leetcode 204 - Count Primes | Yuhan Shi</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="QuestionCount the number of prime numbers less than a non-negative number, n.&amp;lt;! –more–&amp;gt; Example:  Input: 10Output: 4Explanation: There are 4 prime numbers less than 10, they are 2, 3, 5, 7.  Exp">
+    <meta name="description" content="QuestionCount the number of prime numbers less than a non-negative number, n.">
 <meta name="keywords" content="Leetcode,Algorithms,Python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Leetcode 204 - Count Primes">
 <meta property="og:url" content="https://yuhanshi53.github.io/2018/07/16/Leetcode-204-Count-Primes/index.html">
 <meta property="og:site_name" content="Yuhan Shi">
-<meta property="og:description" content="QuestionCount the number of prime numbers less than a non-negative number, n.&amp;lt;! –more–&amp;gt; Example:  Input: 10Output: 4Explanation: There are 4 prime numbers less than 10, they are 2, 3, 5, 7.  Exp">
+<meta property="og:description" content="QuestionCount the number of prime numbers less than a non-negative number, n.">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/b/b9/Sieve_of_Eratosthenes_animation.gif">
-<meta property="og:updated_time" content="2018-07-15T22:12:47.417Z">
+<meta property="og:updated_time" content="2018-07-16T10:26:41.674Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode 204 - Count Primes">
-<meta name="twitter:description" content="QuestionCount the number of prime numbers less than a non-negative number, n.&amp;lt;! –more–&amp;gt; Example:  Input: 10Output: 4Explanation: There are 4 prime numbers less than 10, they are 2, 3, 5, 7.  Exp">
+<meta name="twitter:description" content="QuestionCount the number of prime numbers less than a non-negative number, n.">
 <meta name="twitter:image" content="https://upload.wikimedia.org/wikipedia/commons/b/b9/Sieve_of_Eratosthenes_animation.gif">
     
 
@@ -240,7 +240,7 @@
                     <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Question"><span class="toc-number">1.</span> <span class="toc-text">Question</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Explanation"><span class="toc-number">2.</span> <span class="toc-text">Explanation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Code"><span class="toc-number">3.</span> <span class="toc-text">Code</span></a></li></ol>
                 </div>
             
-            <h3 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h3><p>Count the number of prime numbers less than a non-negative number, n.<br>&lt;! –more–&gt;</p>
+            <h3 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h3><p>Count the number of prime numbers less than a non-negative number, n.<br><a id="more"></a></p>
 <p><strong>Example:</strong></p>
 <blockquote>
 <p>Input: 10<br>Output: 4<br>Explanation: There are 4 prime numbers less than 10, they are 2, 3, 5, 7.</p>
@@ -250,23 +250,7 @@
 <p align="center"> source from wikipedia </p>
 
 <p>这样筛选还是包含了一些不必要的计算，因为一个合数 $n$ 的因子必然小于 $ \sqrt{n} $ ，因此对于 $ n \in {1,N} $ ， 只需要排除小于 $ \sqrt{N}+1 $ 的素数的倍数。至于大于等于 $ \sqrt{n}+1 $ 的素数，它们的倍数要么被更小的素数筛完，要么大于 $N$ ，因此无需判断。</p>
-<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><code class="python"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span>
-    <span class="function"><span class="keyword">def</span> <span class="title">countPrimes</span><span class="params">(self, n)</span>:</span>
-        <span class="string">"""</span>
-<span class="string">        :type n: int</span>
-<span class="string">        :rtype: int</span>
-<span class="string">        """</span>
-        <span class="keyword">if</span> n &lt; <span class="number">2</span>:
-            <span class="keyword">return</span> <span class="number">0</span>
-        nSqrt = int(n**<span class="number">0.5</span>)+<span class="number">1</span>
-        primeList = [<span class="keyword">True</span>] * n
-        primeList[<span class="number">0</span>:<span class="number">2</span>] = [<span class="keyword">False</span>] * <span class="number">2</span>
-        <span class="keyword">for</span> i <span class="keyword">in</span> range(nSqrt):
-            <span class="keyword">if</span> primeList[i]:
-                primeList[<span class="number">2</span>*i:n:i] = [<span class="keyword">False</span>]*len(range(<span class="number">2</span>*i,n,i))
-        res = primeList.count(<span class="keyword">True</span>)
-        <span class="keyword">return</span> res
-</code></pre>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">countPrimes</span><span class="params">(self, n)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type n: int</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> n &lt; <span class="number">2</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        nSqrt = int(n**<span class="number">0.5</span>)+<span class="number">1</span></span><br><span class="line">        primeList = [<span class="keyword">True</span>] * n</span><br><span class="line">        primeList[<span class="number">0</span>:<span class="number">2</span>] = [<span class="keyword">False</span>] * <span class="number">2</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(nSqrt):</span><br><span class="line">            <span class="keyword">if</span> primeList[i]:</span><br><span class="line">                primeList[<span class="number">2</span>*i:n:i] = [<span class="keyword">False</span>]*len(range(<span class="number">2</span>*i,n,i))</span><br><span class="line">        res = primeList.count(<span class="keyword">True</span>)</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
 
         
         </div>
@@ -275,7 +259,7 @@
 
 
     <div class="bdsharebuttonbox">
-    <a class="bds_more" data-cmd="more" data-url="https://yuhanshi53.github.io/2018/07/16/Leetcode-204-Count-Primes/" data-id="cjjo41s7l000goclxrsltjsax" class="article-share-link"><i class="fas fa-share"></i>     Share</a> 
+    <a class="bds_more" data-cmd="more" data-url="https://yuhanshi53.github.io/2018/07/16/Leetcode-204-Count-Primes/" data-id="cjjo4ldhj000990lxc1o8awaz" class="article-share-link"><i class="fas fa-share"></i>     Share</a> 
     <!-- <a href="#" class="bds_more" data-cmd="more">share</a> -->
     <!-- <a href="#" class="bds_tsina" data-cmd="tsina" title="Weibo">Weibo</a>
     <a href="#" class="bds_weixin" data-cmd="weixin" title="Wechat">Wechat</a> -->
