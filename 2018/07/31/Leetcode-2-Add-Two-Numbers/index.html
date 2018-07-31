@@ -3,16 +3,20 @@
 <head>
     <meta charset="utf-8">
     
-    <title>Tags | Yuhan Shi</title>
+    <title>Leetcode 2 - Add Two Numbers | Yuhan Shi</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta property="og:type" content="website">
-<meta property="og:title" content="Tags">
-<meta property="og:url" content="https://yuhanshi53.github.io/tags/index.html">
+    <meta name="description" content="QuestionYou are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two numbers and">
+<meta name="keywords" content="Leetcode,Algorithms,Python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Leetcode 2 - Add Two Numbers">
+<meta property="og:url" content="https://yuhanshi53.github.io/2018/07/31/Leetcode-2-Add-Two-Numbers/index.html">
 <meta property="og:site_name" content="Yuhan Shi">
+<meta property="og:description" content="QuestionYou are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two numbers and">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-07-13T14:10:25.880Z">
+<meta property="og:updated_time" content="2018-07-31T22:20:11.211Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Tags">
+<meta name="twitter:title" content="Leetcode 2 - Add Two Numbers">
+<meta name="twitter:description" content="QuestionYou are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two numbers and">
     
 
     
@@ -186,16 +190,146 @@
 </aside>
 
             
-            <section id="main"><section class="layout-wrap">
-    <div class="layout-title">
-        <span>Tags</span>
-    </div>
-    <div class="layout-wrap-inner tag-cloud">
+            <section id="main"><article id="post-Leetcode-2-Add-Two-Numbers" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
         
-            <a href="/tags/Algorithms/" style="font-size: 21px;">Algorithms</a> <a href="/tags/Algoroithms/" style="font-size: 14px;">Algoroithms</a> <a href="/tags/Leetcode/" style="font-size: 28px;">Leetcode</a> <a href="/tags/Python/" style="font-size: 28px;">Python</a>
         
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            Leetcode 2 - Add Two Numbers
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fas fa-calendar-alt"></i>
+        <a href="/2018/07/31/Leetcode-2-Add-Two-Numbers/">
+            <time datetime="2018-07-31T20:30:38.000Z" itemprop="datePublished">2018-07-31</time>
+        </a>
     </div>
-</section></section>
+
+
+                        
+    <div class="article-category">
+    	<i class="fas fa-folder"></i>
+        <a class="article-category-link" href="/categories/Documents/">Documents</a><i class="fas fa-angle-right"></i><a class="article-category-link" href="/categories/Documents/Algorithms/">Algorithms</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/Algorithms/">Algorithms</a>, <a class="tag-link" href="/tags/Leetcode/">Leetcode</a>, <a class="tag-link" href="/tags/Python/">Python</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+                <div id="toc" class="toc-article">
+                <strong class="toc-title">Catalogue</strong>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Question"><span class="toc-number">1.</span> <span class="toc-text">Question</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Analysis"><span class="toc-number">2.</span> <span class="toc-text">Analysis</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Code"><span class="toc-number">3.</span> <span class="toc-text">Code</span></a></li></ol>
+                </div>
+            
+            <h3 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h3><p>You are given two <strong>non-empty</strong> linked lists representing two non-negative integers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two numbers and return it as a linked list.</p>
+<p>You may assume the two numbers do not contain any leading zero, except the number 0 itself.</p>
+<p><strong>Example:</strong></p>
+<blockquote>
+<p>Input: (2 -&gt; 4 -&gt; 3) + (5 -&gt; 6 -&gt; 4)<br>Output: 7 -&gt; 0 -&gt; 8<br>Explanation: 342 + 465 = 807.</p>
+</blockquote>
+<a id="more"></a>
+<h3 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h3><p>这一道题在一刷的时候还没有特别的解决技巧，基本思路是分为三种情况：</p>
+<ol>
+<li>两个链表节点都有值的时候，将两个节点的值加起来赋给新节点；</li>
+<li>只有链表一的节点有值，将链表一节点的值赋给新节点</li>
+<li>只有链表二的节点有值，将链表一节点的值赋给新节点<br>这是最先想到的解法，代码在下方 <code>Method One</code> 中展示。</li>
+</ol>
+<p>比较简化的思路是，只要链表一或者链表二存在有效值，就继续循环。如果链表一有值而链表二没有，则给链表二的节点赋值 <code>ListNode(0)</code> 用于计算；反之给链表一的节点赋值 <code>ListNode(0)</code>。这样操作省去了分情况讨论的复杂性，这个算法的代码在 <code>Method Optimum</code> 中展示。另外需要注意的是，当两个值相加超过9时，仅保留个位上的数字，并进位，因此需要额外的空间保存进位信息。</p>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">addTwoNumbers</span><span class="params">(self, l1, l2)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type l1: ListNode</span></span><br><span class="line"><span class="string">        :type l2: ListNode</span></span><br><span class="line"><span class="string">        :rtype: ListNode</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="comment"># Method Two</span></span><br><span class="line">        temp = ListNode(<span class="number">0</span>)</span><br><span class="line">        res = temp</span><br><span class="line">        carry = <span class="number">0</span></span><br><span class="line">        <span class="keyword">while</span> l1 <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span> <span class="keyword">or</span> l2 <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span>:</span><br><span class="line">            l1 = l1 <span class="keyword">or</span> ListNode(<span class="number">0</span>)</span><br><span class="line">            l2 = l2 <span class="keyword">or</span> ListNode(<span class="number">0</span>)</span><br><span class="line">            total = l1.val+l2.val+carry</span><br><span class="line">            carry = total//<span class="number">10</span></span><br><span class="line">            total %= <span class="number">10</span></span><br><span class="line">            l1 = l1.next</span><br><span class="line">            l2 = l2.next</span><br><span class="line">            temp.next = ListNode(total)</span><br><span class="line">            temp = temp.next</span><br><span class="line">        <span class="keyword">if</span> carry == <span class="number">1</span>:</span><br><span class="line">            temp.next = ListNode(<span class="number">1</span>)</span><br><span class="line">        <span class="keyword">return</span> res.next </span><br><span class="line">        </span><br><span class="line">        <span class="comment"># Method One</span></span><br><span class="line">        <span class="comment"># temp = ListNode(0)</span></span><br><span class="line">        <span class="comment"># res = temp</span></span><br><span class="line">        <span class="comment"># addOne = 0</span></span><br><span class="line">        <span class="comment"># while(l1 or l2 or addOne):</span></span><br><span class="line">        <span class="comment">#     temp.next = ListNode(0)</span></span><br><span class="line">        <span class="comment">#     temp = temp.next</span></span><br><span class="line">        <span class="comment">#     if l1 and l2:</span></span><br><span class="line">        <span class="comment">#         temp.val = l1.val+l2.val+addOne</span></span><br><span class="line">        <span class="comment">#         l1 = l1.next</span></span><br><span class="line">        <span class="comment">#         l2 = l2.next</span></span><br><span class="line">        <span class="comment">#     elif l1:</span></span><br><span class="line">        <span class="comment">#         temp.val = l1.val+addOne</span></span><br><span class="line">        <span class="comment">#         l1 = l1.next</span></span><br><span class="line">        <span class="comment">#     elif l2:</span></span><br><span class="line">        <span class="comment">#         temp.val = l2.val+addOne</span></span><br><span class="line">        <span class="comment">#         l2 = l2.next</span></span><br><span class="line">        <span class="comment">#     else:</span></span><br><span class="line">        <span class="comment">#         temp.val = 1</span></span><br><span class="line">        <span class="comment">#     addOne = temp.val // 10</span></span><br><span class="line">        <span class="comment">#     temp.val %= 10</span></span><br><span class="line">        <span class="comment"># return res.next</span></span><br></pre></td></tr></table></figure>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+    <div class="bdsharebuttonbox">
+    <a class="bds_more" data-cmd="more" data-url="https://yuhanshi53.github.io/2018/07/31/Leetcode-2-Add-Two-Numbers/" data-id="cjka9ogg5001fhglxydkfcirl" class="article-share-link"><i class="fas fa-share"></i>     Share</a> 
+    <!-- <a href="#" class="bds_more" data-cmd="more">share</a> -->
+    <!-- <a href="#" class="bds_tsina" data-cmd="tsina" title="Weibo">Weibo</a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="Wechat">Wechat</a> -->
+</div>
+<script>
+window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"10","bdSize":"16"},"share":{"bdSize":16}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?'];</script>
+<style>
+    .bdshare_popup_box {
+        border-radius: 4px;
+        border: #e1e1e1 solid 1px;
+    }
+    .bdshare-button-style0-16 a,
+    .bdshare-button-style0-16 .bds_more {
+        padding-left: 20px;
+        margin: 6px 10px 6px 0;
+    }
+    .bdshare_dialog_list a,
+    .bdshare_popup_list a,
+    .bdshare_popup_bottom a {
+        font-family: 'Microsoft Yahei';
+    }
+    .bdshare_popup_top {
+        display: none;
+    }
+    .bdshare_popup_bottom {
+        height: auto;
+        padding: 5px;
+    }
+</style>
+
+
+
+</div>
+
+            
+    
+        <a href="https://yuhanshi53.github.io/2018/07/31/Leetcode-2-Add-Two-Numbers/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="https://yuhanshi53.github.io/2018/07/31/Leetcode-2-Add-Two-Numbers/">Comments</a>
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2018/07/30/Leetcode-334-Increasing-Triplet-Subsequence/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">Leetcode 334 - Increasing Triplet Subsequence</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+</section>
+    
+
+</section>
             
                 
 <aside id="sidebar">
@@ -358,9 +492,9 @@
     <script>
     var disqus_config = function () {
         
-            this.page.url = 'https://yuhanshi53.github.io/tags/index.html';
+            this.page.url = 'https://yuhanshi53.github.io/2018/07/31/Leetcode-2-Add-Two-Numbers/';
         
-        this.page.identifier = '';
+        this.page.identifier = 'Leetcode-2-Add-Two-Numbers';
     };
     (function() { 
         var d = document, s = d.createElement('script');  
