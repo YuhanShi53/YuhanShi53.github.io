@@ -15,7 +15,7 @@
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Sorted_binary_tree_inorder.svg/220px-Sorted_binary_tree_inorder.svg.png">
 <meta property="og:image" content="https://yuhanshi53.github.io/2018/08/02/Leetcode-94-Binary-Tree-Inorder-Traversal/Leetcode%2094%20-%20Binary%20Tree%20Inorder%20Traversal%20pic%201.png">
-<meta property="og:updated_time" content="2018-08-02T14:00:24.007Z">
+<meta property="og:updated_time" content="2018-09-18T12:39:10.076Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode 94 - Binary Tree Inorder Traversal （中值遍历）">
 <meta name="twitter:description" content="QuestionGiven a binary tree, return the inorder traversal of its nodes’ values. Example: Input: [1,null,2,3]    1     \      2     /    3  Output: [1,3,2]  Follow up: Recursive solution is trivial, co">
@@ -159,11 +159,11 @@
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                17
+                18
                 <span>posts</span>
             </div>
             <div class="article-info-block">
-                5
+                6
                 <span>tags</span>
             </div>
         </div>
@@ -263,9 +263,9 @@
 <ol>
 <li><p><strong>递归</strong><br>给递归函数传入一个节点，递归函数再调用自身并传入左子节点，遍历节点左侧；再输出节点自身的值；最后调用自身并传入右子节点，遍历右侧。当前节点为空时，不做处理。</p>
 </li>
-<li><p><strong>循环</strong><br>循环中需要额外的栈用来储存当前节点下的左节点，当左节点遍历到底时，输出当前左子节点 A 的值，并将当前节点赋值为其右子节点B。如果右子节点 B 非空，则从右子节点B开始向下遍历其左子节点 C；如果右子节点 B 为空，则 <code>pop</code> 出 <code>stack</code> 下一个值（即 A 的父节点）进行输出，然后继续上述循环。这里解释可能不清晰，所以采用字母区别节点，希望代码能够表达清楚思路。</p>
+<li><p><strong>循环</strong><br>循环中需要额外的栈用来储存当前节点下的左节点，当左节点遍历到底时，输出当前左子节点A的值，并将当前节点赋值为其右子节点B。如果右子节点B非空，则从右子节点B开始向下遍历其左子节点C；如果右子节点B为空，则 <code>pop</code> 出 <code>stack</code> 下一个值（即A的父节点）进行输出，然后继续上述循环。这里解释可能不清晰，所以采用字母区别节点，希望代码能够表达清楚思路。</p>
 </li>
-<li><p><strong>Morris Traversal</strong><br>无论是递归还是循环，他们的时间复杂度都是 O(n)，空间复杂度都是 O(logn)，<strong>Morris Traversal</strong> 让部分右子节点指回某一级的节点，从而在循环中完成从子节点回到父节点的操作，而不使用额外的栈来储存节点。具体的原理解释不太易懂，这里用图示解释：<br><img src="/2018/08/02/Leetcode-94-Binary-Tree-Inorder-Traversal/Leetcode 94 - Binary Tree Inorder Traversal pic 1.png" alt="Morris Traversal"></p>
+<li><p><strong>Morris Traversal</strong><br>无论是递归还是循环，他们的时间复杂度都是O(n)，空间复杂度都是O(logn)，<strong>Morris Traversal</strong> 让部分右子节点指回某一级的节点，从而在循环中完成从子节点回到父节点的操作，而不使用额外的栈来储存节点。具体的原理解释不太易懂，这里用图示解释：<br><img src="/2018/08/02/Leetcode-94-Binary-Tree-Inorder-Traversal/Leetcode 94 - Binary Tree Inorder Traversal pic 1.png" alt="Morris Traversal"></p>
 </li>
 </ol>
 <h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Definition for a binary tree node.</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TreeNode</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, x)</span>:</span></span><br><span class="line">        self.val = x</span><br><span class="line">        self.left = <span class="keyword">None</span></span><br><span class="line">        self.right = <span class="keyword">None</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">inorderTraversal</span><span class="params">(self, root)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type root: TreeNode</span></span><br><span class="line"><span class="string">        :rtype: List[int]</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="comment"># Method 1 - Recursive</span></span><br><span class="line">        <span class="comment"># if root == None:</span></span><br><span class="line">        <span class="comment">#     return []</span></span><br><span class="line">        <span class="comment"># res = []</span></span><br><span class="line">        <span class="comment"># self.inorderTraversalHelper(root, res)</span></span><br><span class="line">        <span class="comment"># return res</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># def inorderTraversalHelper(self, root, res):</span></span><br><span class="line">        <span class="comment"># if root:</span></span><br><span class="line">        <span class="comment">#     self.inorderTraversalHelper(root.left, res)</span></span><br><span class="line">        <span class="comment">#     res.append(root.val)</span></span><br><span class="line">        <span class="comment">#     self.inorderTraversalHelper(root.right, res)</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># Method 2 - Iterative</span></span><br><span class="line">        <span class="comment"># if root == None:</span></span><br><span class="line">        <span class="comment">#     return []</span></span><br><span class="line">        <span class="comment"># stack = []</span></span><br><span class="line">        <span class="comment"># res = []</span></span><br><span class="line">        <span class="comment"># while(root!=None or len(stack)!=0):</span></span><br><span class="line">        <span class="comment">#     while(root != None):</span></span><br><span class="line">        <span class="comment">#         stack.append(root)</span></span><br><span class="line">        <span class="comment">#         root = root.left</span></span><br><span class="line">        <span class="comment">#     if(stack):</span></span><br><span class="line">        <span class="comment">#         root = stack.pop()</span></span><br><span class="line">        <span class="comment">#         res.append(root.val)</span></span><br><span class="line">        <span class="comment">#         root = root.right</span></span><br><span class="line">        <span class="comment"># return res</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment"># Method 3 - Morris Traversal</span></span><br><span class="line">        res = []</span><br><span class="line">        cur = root</span><br><span class="line">        <span class="keyword">while</span>(cur):</span><br><span class="line">            <span class="keyword">if</span> cur.left == <span class="keyword">None</span>:</span><br><span class="line">                res.append(cur.val)</span><br><span class="line">                cur = cur.right</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                pre = cur.left</span><br><span class="line">                <span class="keyword">while</span>(pre.right != <span class="keyword">None</span> <span class="keyword">and</span> pre.right != cur):</span><br><span class="line">                    pre = pre.right</span><br><span class="line">                <span class="keyword">if</span> pre.right == <span class="keyword">None</span>:</span><br><span class="line">                    pre.right = cur</span><br><span class="line">                    cur = cur.left</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    pre.right = <span class="keyword">None</span></span><br><span class="line">                    res.append(cur.val)</span><br><span class="line">                    cur = cur.right</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
@@ -277,7 +277,7 @@
 
 
     <div class="bdsharebuttonbox">
-    <a class="bds_more" data-cmd="more" data-url="https://yuhanshi53.github.io/2018/08/02/Leetcode-94-Binary-Tree-Inorder-Traversal/" data-id="cjkcmo8lo00174clxcs7npwv9" class="article-share-link"><i class="fas fa-share"></i>     Share</a> 
+    <a class="bds_more" data-cmd="more" data-url="https://yuhanshi53.github.io/2018/08/02/Leetcode-94-Binary-Tree-Inorder-Traversal/" data-id="cjm7sf1eq001198lxq1txbthd" class="article-share-link"><i class="fas fa-share"></i>     Share</a> 
     <!-- <a href="#" class="bds_more" data-cmd="more">share</a> -->
     <!-- <a href="#" class="bds_tsina" data-cmd="tsina" title="Weibo">Weibo</a>
     <a href="#" class="bds_weixin" data-cmd="weixin" title="Wechat">Wechat</a> -->
@@ -323,6 +323,15 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
         
 <nav id="article-nav">
     
+        <a href="/2018/09/19/Leetcode-160-Intersection-of-Two-Linked-Lists/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    Leedcode 160 Intersection of Two Linked Lists
+                
+            </div>
+        </a>
+    
     
         <a href="/2018/08/01/Leetcode-328-Odd-Even-Linked-List/" id="article-nav-older" class="article-nav-link-wrap">
             <strong class="article-nav-caption">Older</strong>
@@ -355,6 +364,25 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
         <h3 class="widget-title">recent</h3>
         <div class="widget">
             <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/09/19/Leetcode-160-Intersection-of-Two-Linked-Lists/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Documents/">Documents</a><i class="fas fa-angle-right"></i><a class="article-category-link" href="/categories/Documents/Algorithms/">Algorithms</a></p>
+                            <p class="item-title"><a href="/2018/09/19/Leetcode-160-Intersection-of-Two-Linked-Lists/" class="title">Leedcode 160 Intersection of Two Linked Lists</a></p>
+                            <p class="item-date"><time datetime="2018-09-18T19:26:43.000Z" itemprop="datePublished">2018-09-18</time></p>
+                        </div>
+                    </li>
                 
                     <li>
                         
@@ -397,7 +425,7 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2018/07/31/Leetcode-2-Add-Two-Numbers/" class="thumbnail">
+                            <a href="/2018/08/01/Leetcode-2-Add-Two-Numbers/" class="thumbnail">
     
     
         <span class="thumbnail-image thumbnail-none"></span>
@@ -408,7 +436,7 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/Documents/">Documents</a><i class="fas fa-angle-right"></i><a class="article-category-link" href="/categories/Documents/Algorithms/">Algorithms</a></p>
-                            <p class="item-title"><a href="/2018/07/31/Leetcode-2-Add-Two-Numbers/" class="title">Leetcode 2 - Add Two Numbers</a></p>
+                            <p class="item-title"><a href="/2018/08/01/Leetcode-2-Add-Two-Numbers/" class="title">Leetcode 2 - Add Two Numbers</a></p>
                             <p class="item-date"><time datetime="2018-07-31T20:30:38.000Z" itemprop="datePublished">2018-07-31</time></p>
                         </div>
                     </li>
@@ -416,7 +444,7 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2018/07/30/Leetcode-334-Increasing-Triplet-Subsequence/" class="thumbnail">
+                            <a href="/2018/07/31/Leetcode-334-Increasing-Triplet-Subsequence/" class="thumbnail">
     
     
         <span class="thumbnail-image thumbnail-none"></span>
@@ -427,27 +455,8 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/Documents/">Documents</a><i class="fas fa-angle-right"></i><a class="article-category-link" href="/categories/Documents/Algorithms/">Algorithms</a></p>
-                            <p class="item-title"><a href="/2018/07/30/Leetcode-334-Increasing-Triplet-Subsequence/" class="title">Leetcode 334 - Increasing Triplet Subsequence</a></p>
+                            <p class="item-title"><a href="/2018/07/31/Leetcode-334-Increasing-Triplet-Subsequence/" class="title">Leetcode 334 - Increasing Triplet Subsequence</a></p>
                             <p class="item-date"><time datetime="2018-07-30T19:26:02.000Z" itemprop="datePublished">2018-07-30</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2018/07/20/Leetcode-101-Symmetric-Tree/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Documents/">Documents</a><i class="fas fa-angle-right"></i><a class="article-category-link" href="/categories/Documents/Algorithms/">Algorithms</a></p>
-                            <p class="item-title"><a href="/2018/07/20/Leetcode-101-Symmetric-Tree/" class="title">Leetcode 101 - Symmetric Tree</a></p>
-                            <p class="item-date"><time datetime="2018-07-20T15:47:30.000Z" itemprop="datePublished">2018-07-20</time></p>
                         </div>
                     </li>
                 
@@ -460,7 +469,7 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
     <div class="widget-wrap">
         <h3 class="widget-title">archives</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">15</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">15</span></li></ul>
         </div>
     </div>
 
@@ -469,7 +478,7 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
     <div class="widget-wrap">
         <h3 class="widget-title">tags</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithms/">Algorithms</a><span class="tag-list-count">16</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algoroithms/">Algoroithms</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Leetcode/">Leetcode</a><span class="tag-list-count">17</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">17</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tree/">Tree</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithms/">Algorithms</a><span class="tag-list-count">17</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algoroithms/">Algoroithms</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Leetcode/">Leetcode</a><span class="tag-list-count">18</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linked-Lists/">Linked Lists</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">18</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tree/">Tree</a><span class="tag-list-count">1</span></li></ul>
         </div>
     </div>
 
