@@ -3,20 +3,24 @@
 <head>
     <meta charset="utf-8">
     
-    <title>Leetcode 334 - Increasing Triplet Subsequence | Yuhan Shi</title>
+    <title>Leetcode 5 Longest Palindromic Substring （With Manacher&#39;s Algorithms) | Yuhan Shi</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="QuestionGiven an unsorted array return whether an increasing subsequence of length 3 exists or not in the array. Formally the function should:  Return true if there exists i, j, ksuch that arr[i] &amp;lt;">
+    <meta name="description" content="QuestionGiven a string s, find the longest palindromic substring in s. You may assume that the maximum length of s is 1000. Example 1:  Input: “babad”Output: “bab”Note: “aba” is also a valid answer.">
 <meta name="keywords" content="Leetcode,Algorithms,Python">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Leetcode 334 - Increasing Triplet Subsequence">
-<meta property="og:url" content="https://yuhanshi53.github.io/2018/07/31/Leetcode-334-Increasing-Triplet-Subsequence/index.html">
+<meta property="og:title" content="Leetcode 5 Longest Palindromic Substring （With Manacher&#39;s Algorithms)">
+<meta property="og:url" content="https://yuhanshi53.github.io/2018/09/30/Leetcode-5-Longest-Palindromic-Substring/index.html">
 <meta property="og:site_name" content="Yuhan Shi">
-<meta property="og:description" content="QuestionGiven an unsorted array return whether an increasing subsequence of length 3 exists or not in the array. Formally the function should:  Return true if there exists i, j, ksuch that arr[i] &amp;lt;">
+<meta property="og:description" content="QuestionGiven a string s, find the longest palindromic substring in s. You may assume that the maximum length of s is 1000. Example 1:  Input: “babad”Output: “bab”Note: “aba” is also a valid answer.">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-08-01T09:52:50.221Z">
+<meta property="og:image" content="https://yuhanshi53.github.io/2018/09/29/Leetcode-5-Longest-Palindromic-Substring/1.png">
+<meta property="og:image" content="https://yuhanshi53.github.io/2018/09/29/Leetcode-5-Longest-Palindromic-Substring/2.png">
+<meta property="og:image" content="https://yuhanshi53.github.io/2018/09/29/Leetcode-5-Longest-Palindromic-Substring/3.png">
+<meta property="og:updated_time" content="2018-09-29T17:45:50.174Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Leetcode 334 - Increasing Triplet Subsequence">
-<meta name="twitter:description" content="QuestionGiven an unsorted array return whether an increasing subsequence of length 3 exists or not in the array. Formally the function should:  Return true if there exists i, j, ksuch that arr[i] &amp;lt;">
+<meta name="twitter:title" content="Leetcode 5 Longest Palindromic Substring （With Manacher&#39;s Algorithms)">
+<meta name="twitter:description" content="QuestionGiven a string s, find the longest palindromic substring in s. You may assume that the maximum length of s is 1000. Example 1:  Input: “babad”Output: “bab”Note: “aba” is also a valid answer.">
+<meta name="twitter:image" content="https://yuhanshi53.github.io/2018/09/29/Leetcode-5-Longest-Palindromic-Substring/1.png">
     
 
     
@@ -190,7 +194,7 @@
 </aside>
 
             
-            <section id="main"><article id="post-Leetcode-334-Increasing-Triplet-Subsequence" class="article article-type-post" itemscope itemprop="blogPost">
+            <section id="main"><article id="post-Leetcode-5-Longest-Palindromic-Substring" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -198,7 +202,7 @@
                 
     
         <h1 class="article-title" itemprop="name">
-            Leetcode 334 - Increasing Triplet Subsequence
+            Leetcode 5 Longest Palindromic Substring （With Manacher&#39;s Algorithms)
         </h1>
     
 
@@ -207,8 +211,8 @@
                         
     <div class="article-date">
         <i class="fas fa-calendar-alt"></i>
-        <a href="/2018/07/31/Leetcode-334-Increasing-Triplet-Subsequence/">
-            <time datetime="2018-07-30T19:26:02.000Z" itemprop="datePublished">2018-07-30</time>
+        <a href="/2018/09/30/Leetcode-5-Longest-Palindromic-Substring/">
+            <time datetime="2018-09-29T23:54:58.000Z" itemprop="datePublished">2018-09-29</time>
         </a>
     </div>
 
@@ -216,7 +220,7 @@
                         
     <div class="article-category">
     	<i class="fas fa-folder"></i>
-        <a class="article-category-link" href="/categories/Documents/">Documents</a><i class="fas fa-angle-right"></i><a class="article-category-link" href="/categories/Documents/Algorithms/">Algorithms</a>
+        <a class="article-category-link" href="/categories/Documents/">Documents</a>
     </div>
 
                         
@@ -235,25 +239,50 @@
             
                 <div id="toc" class="toc-article">
                 <strong class="toc-title">Catalogue</strong>
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Question"><span class="toc-number">1.</span> <span class="toc-text">Question</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Analysis"><span class="toc-number">2.</span> <span class="toc-text">Analysis</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Code"><span class="toc-number">3.</span> <span class="toc-text">Code</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Question"><span class="toc-number">1.</span> <span class="toc-text">Question</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Analysis"><span class="toc-number">2.</span> <span class="toc-text">Analysis</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#为什么循环嵌套循环，时间复杂度还是-O-n"><span class="toc-number">2.1.</span> <span class="toc-text">为什么循环嵌套循环，时间复杂度还是 O(n)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Code"><span class="toc-number">3.</span> <span class="toc-text">Code</span></a></li></ol>
                 </div>
             
-            <h3 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h3><p>Given an unsorted array return whether an increasing subsequence of length 3 exists or not in the array.</p>
-<p>Formally the function should:</p>
-<blockquote>
-<p>Return true if there exists i, j, k<br>such that arr[i] &lt; arr[j] &lt; arr[k] given 0 ≤ i &lt; j &lt; k ≤ n-1 else return false.<br>Note: Your algorithm should run in O(n) time complexity and O(1) space complexity.</p>
-</blockquote>
+            <h3 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h3><p>Given a string s, find the longest palindromic substring in s. You may assume that the maximum length of s is 1000.</p>
 <p><strong>Example 1:</strong></p>
 <blockquote>
-<p>Input: [1,2,3,4,5]<br>Output: true<br>Example 2:</p>
+<p>Input: “babad”<br>Output: “bab”<br>Note: “aba” is also a valid answer.</p>
 </blockquote>
+<p><strong>Example 2:</strong></p>
 <blockquote>
-<p>Input: [5,4,3,2,1]<br>Output: false</p>
+<p>Input: “cbbd”<br>Output: “bb”</p>
 </blockquote>
 <a id="more"></a>
-<h3 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h3><p>因为题目要求我们找到长度为3的递增子序列，因此我们可以设置两个指针 <code>p1</code> 和 <code>p2</code>，一个指向值较小的元素，一个指向值较大的元素在遍历序列的过程中，一旦遇到值比第二个值大，那么必然存在符合条件的子序列。在遍历的同时，如果遇到值小于 <code>p1</code>，则将新的值赋给 <code>p1</code>，如果新的值大于 <code>p1</code>， 小于 <code>p2</code>，则将新的值赋给 <code>p2</code>。这样做将递增序列的下限下调，便于更快地找到子序列第三个元素。</p>
-<p>由于整个过程始终保证存在 <code>p1</code> 的值小于 <code>p2</code>，因此即便 <code>p1</code> 指向的值次序大于 <code>p2</code>, 一旦当前值大于 <code>p2</code>，一定能找到 <code>p1</code> 过去或现在的某个值组成递增序列。</p>
-<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">increasingTriplet</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type nums: List[int]</span></span><br><span class="line"><span class="string">        :rtype: bool</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        p1 = p2 = float(<span class="string">'inf'</span>)</span><br><span class="line">        <span class="keyword">for</span> x <span class="keyword">in</span> nums:</span><br><span class="line">            <span class="keyword">if</span> x &lt;= p1:</span><br><span class="line">                p1 = x</span><br><span class="line">            <span class="keyword">elif</span> x &lt;= p2:</span><br><span class="line">                p2 = x</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">False</span></span><br></pre></td></tr></table></figure>
+<h3 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h3><p>回文子串就是字符串当中，正反念都是一样的子字符串，最简单的思路就是先用两个循环遍历所有子串，将每个子串反过来判断是否是回文串，然后找出最长的回文子串，这种方法除了两个循环，判断子串是否是回文串时，也用到了 O(n) 的时间复杂度，所以一共是 $O(n^3)$ 的时间复杂度，明显效率很低。网上还有动态规划的办法，但是效率也不是特别高。普通方法效率不高的主要原因就是重复遍历了一些子串，因此这里直接介绍时间复杂度为 O(n) 的 Manacher’s Algorithms，它借助已有的回文串的信息，减少了重复遍历的次数。</p>
+<p>首先，回文串有可能关于中间的一个字符对称（奇数个字符），也有可能关于两个字符间的间隙对称（偶数个字符），因此我们先向每个间隙加入一个分隔字符（这里用”#”），这样所有回文串都会关于一个字符对称，这样做的原因稍后会解释。</p>
+<p>接下来会问的问题就是，加了分隔字符后，怎么样从新的字符串中提取原回文串的长度，看下面一个例子。</p>
+<blockquote>
+<p>abcba<br>01234</p>
+<p>#a#b#c#b#a#<br>012345678910</p>
+</blockquote>
+<p>原回文串的长度为5，加了分隔字符后，长度变为<code>2*5+1</code>，因此原回文串的长度就是新回文串的半径（包括中心）-1。这里是<code>6-1</code>。这样子就可以从新构造的回文串中求得原回文串的长度。接下来介绍，Manacher 如何借助已有的回文串，减少遍历次数。下图展示了一个回文串，假设这是已知边界最右的子回文串，回文串的中心记为 id，右边界记为 maxRight，目前遍历到了 i 处，每个位置的回文串半径用列表 R 储存，途中用红色笔记标出。</p>
+<p><img src="/2018/09/29/Leetcode-5-Longest-Palindromic-Substring/1.png" alt="Manacher&#39;s Algorithms 1"></p>
+<p>根据 i 的位置，这里需要分情况讨论：</p>
+<ol>
+<li><strong>假设 i 不在最右回文串以内</strong> </li>
+</ol>
+<p>首先我们使<code>R[i]=1</code>，因为 i 超出了已知回文串的范围，无已有信息可以利用，只能暴力从 i 处开始向两边延伸，判断回文串长度。</p>
+<ol start="2">
+<li><strong>假设 i 在最右回文串以内</strong></li>
+</ol>
+<p>我们找出 i 关于 id 对称的点 j (j=2*id-i)，由于回文串的对称性，R[i] 可能等于 R[j]。为什么是可能呢，这里也需要分情况讨论：</p>
+<ol>
+<li><strong>j 为中心的回文串超出 id 为中心的回文串</strong></li>
+</ol>
+<p><img src="/2018/09/29/Leetcode-5-Longest-Palindromic-Substring/2.png" alt="Manacher&#39;s Algorithms 1"></p>
+<p>此时 <code>R[i] == maxRight-id+1</code>，因为这种情况下 i 为中心的字符串不可能超出 id 为中心的字符串。</p>
+<ol start="2">
+<li><strong>j 为中心的回文串在 id 为中心的回文串以内</strong></li>
+</ol>
+<p><img src="/2018/09/29/Leetcode-5-Longest-Palindromic-Substring/3.png" alt="Manacher&#39;s Algorithms 1"></p>
+<p>如果 j 为中心的回文串没有达到 id 为中心的回文串边界，则根据对称性，<code>R[i] == R[j]</code>。反之，先将 <code>R[i] == R[j]</code>，再暴力拓展 i 为中心的回文串，找出回文串的最长范围，因为 i 为中心的回文串可能超出 id 为中心的回文串范围。</p>
+<p>至此，R[i] 的值就可以定下来了。然后我们需要更新 maxRight 和 id。如果 i 为中心的回文串超出了原 id 为中心的回文串范围，我们需要将 id 更新为 i, 将 maxRight 更新为 i 为中心的回文串右边界。最后，我们需要得到的 R[i]，更新最长回文串。</p>
+<p>Manacher’s Algorithms 十分巧妙地利用已经被发现的最右回文串以及它的对称性，极大的缩短了判断 R[i] 所需要的时间，在一些情况下甚至可以不用暴力寻找回文串就可以确定回文串长度，因此时间复杂度得到很好的优化。</p>
+<h4 id="为什么循环嵌套循环，时间复杂度还是-O-n"><a href="#为什么循环嵌套循环，时间复杂度还是-O-n" class="headerlink" title="为什么循环嵌套循环，时间复杂度还是 O(n)"></a>为什么循环嵌套循环，时间复杂度还是 O(n)</h4><h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">longestPalindrome</span><span class="params">(self, s)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type s: str</span></span><br><span class="line"><span class="string">        :rtype: str</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> s <span class="keyword">is</span> <span class="keyword">None</span> <span class="keyword">or</span> len(s) == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">''</span></span><br><span class="line">        <span class="comment"># Preprocessing</span></span><br><span class="line">        ss = <span class="string">'$#'</span>+<span class="string">'#'</span>.join(s) +<span class="string">'#'</span>  <span class="comment"># add boundary</span></span><br><span class="line">        ssLen = len(ss)</span><br><span class="line">        maxLen = <span class="number">0</span></span><br><span class="line">        id = <span class="number">0</span></span><br><span class="line">        maxRight = <span class="number">0</span></span><br><span class="line">        R = [<span class="number">0</span>]*ssLen</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(ssLen):</span><br><span class="line">            <span class="keyword">if</span> i &lt; maxRight:</span><br><span class="line">                R[i] = min(R[<span class="number">2</span>*id-i], maxRight-i)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                R[i] = <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> R[<span class="number">2</span>*id-i] &gt; maxRight-id+<span class="number">1</span>:</span><br><span class="line">                <span class="keyword">pass</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">while</span>(i-R[i]&gt;=<span class="number">0</span> <span class="keyword">and</span> i+R[i] &lt; ssLen <span class="keyword">and</span> ss[i-R[i]] == ss[i+R[i]]):</span><br><span class="line">                    R[i]+=<span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> R[i] &gt; maxLen:</span><br><span class="line">                maxLen = R[i]</span><br><span class="line">                longestPalinWithSeq = ss[i-R[i]+<span class="number">1</span>:i+R[i]]</span><br><span class="line">            <span class="keyword">if</span> R[i]+i<span class="number">-1</span> &gt; maxRight:</span><br><span class="line">                maxRight = R[i]+i<span class="number">-1</span></span><br><span class="line">                id = i</span><br><span class="line">                longestPalin = longestPalinWithSeq[<span class="number">1</span>:].replace(<span class="string">'#'</span>,<span class="string">''</span>)  <span class="comment"># remove boundary</span></span><br><span class="line">        <span class="keyword">return</span> longestPalin</span><br></pre></td></tr></table></figure>
         
         </div>
         <footer class="article-footer">
@@ -261,7 +290,7 @@
 
 
     <div class="bdsharebuttonbox">
-    <a class="bds_more" data-cmd="more" data-url="https://yuhanshi53.github.io/2018/07/31/Leetcode-334-Increasing-Triplet-Subsequence/" data-id="cjmnqa3h8001778lxcgzmzlwv" class="article-share-link"><i class="fas fa-share"></i>     Share</a> 
+    <a class="bds_more" data-cmd="more" data-url="https://yuhanshi53.github.io/2018/09/30/Leetcode-5-Longest-Palindromic-Substring/" data-id="cjmnqa3hm001h78lxlnvg4y1g" class="article-share-link"><i class="fas fa-share"></i>     Share</a> 
     <!-- <a href="#" class="bds_more" data-cmd="more">share</a> -->
     <!-- <a href="#" class="bds_tsina" data-cmd="tsina" title="Weibo">Weibo</a>
     <a href="#" class="bds_weixin" data-cmd="weixin" title="Wechat">Wechat</a> -->
@@ -298,7 +327,7 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
 
             
     
-        <a href="https://yuhanshi53.github.io/2018/07/31/Leetcode-334-Increasing-Triplet-Subsequence/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="https://yuhanshi53.github.io/2018/07/31/Leetcode-334-Increasing-Triplet-Subsequence/">Comments</a>
+        <a href="https://yuhanshi53.github.io/2018/09/30/Leetcode-5-Longest-Palindromic-Substring/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="https://yuhanshi53.github.io/2018/09/30/Leetcode-5-Longest-Palindromic-Substring/">Comments</a>
     
 
         </footer>
@@ -307,19 +336,10 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
         
 <nav id="article-nav">
     
-        <a href="/2018/08/01/Leetcode-2-Add-Two-Numbers/" id="article-nav-newer" class="article-nav-link-wrap">
-            <strong class="article-nav-caption">Newer</strong>
-            <div class="article-nav-title">
-                
-                    Leetcode 2 - Add Two Numbers
-                
-            </div>
-        </a>
     
-    
-        <a href="/2018/07/20/Leetcode-101-Symmetric-Tree/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2018/09/19/Leetcode-160-Intersection-of-Two-Linked-Lists/" id="article-nav-older" class="article-nav-link-wrap">
             <strong class="article-nav-caption">Older</strong>
-            <div class="article-nav-title">Leetcode 101 - Symmetric Tree</div>
+            <div class="article-nav-title">Leedcode 160 Intersection of Two Linked Lists</div>
         </a>
     
 </nav>
@@ -501,9 +521,9 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
     <script>
     var disqus_config = function () {
         
-            this.page.url = 'https://yuhanshi53.github.io/2018/07/31/Leetcode-334-Increasing-Triplet-Subsequence/';
+            this.page.url = 'https://yuhanshi53.github.io/2018/09/30/Leetcode-5-Longest-Palindromic-Substring/';
         
-        this.page.identifier = 'Leetcode-334-Increasing-Triplet-Subsequence';
+        this.page.identifier = 'Leetcode-5-Longest-Palindromic-Substring';
     };
     (function() { 
         var d = document, s = d.createElement('script');  
