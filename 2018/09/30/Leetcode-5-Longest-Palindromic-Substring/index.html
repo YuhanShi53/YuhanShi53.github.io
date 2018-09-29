@@ -13,14 +13,14 @@
 <meta property="og:site_name" content="Yuhan Shi">
 <meta property="og:description" content="QuestionGiven a string s, find the longest palindromic substring in s. You may assume that the maximum length of s is 1000. Example 1:  Input: “babad”Output: “bab”Note: “aba” is also a valid answer.">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="https://yuhanshi53.github.io/2018/09/29/Leetcode-5-Longest-Palindromic-Substring/1.png">
-<meta property="og:image" content="https://yuhanshi53.github.io/2018/09/29/Leetcode-5-Longest-Palindromic-Substring/2.png">
-<meta property="og:image" content="https://yuhanshi53.github.io/2018/09/29/Leetcode-5-Longest-Palindromic-Substring/3.png">
-<meta property="og:updated_time" content="2018-09-29T17:47:38.382Z">
+<meta property="og:image" content="https://yuhanshi53.github.io/2018/09/30/Leetcode-5-Longest-Palindromic-Substring/1.png">
+<meta property="og:image" content="https://yuhanshi53.github.io/2018/09/30/Leetcode-5-Longest-Palindromic-Substring/2.png">
+<meta property="og:image" content="https://yuhanshi53.github.io/2018/09/30/Leetcode-5-Longest-Palindromic-Substring/3.png">
+<meta property="og:updated_time" content="2018-09-29T18:04:13.744Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode 5 Longest Palindromic Substring （With Manacher&#39;s Algorithms)">
 <meta name="twitter:description" content="QuestionGiven a string s, find the longest palindromic substring in s. You may assume that the maximum length of s is 1000. Example 1:  Input: “babad”Output: “bab”Note: “aba” is also a valid answer.">
-<meta name="twitter:image" content="https://yuhanshi53.github.io/2018/09/29/Leetcode-5-Longest-Palindromic-Substring/1.png">
+<meta name="twitter:image" content="https://yuhanshi53.github.io/2018/09/30/Leetcode-5-Longest-Palindromic-Substring/1.png">
     
 
     
@@ -260,7 +260,7 @@
 <p>#a#b#c#b#a#<br>012345678910</p>
 </blockquote>
 <p>原回文串的长度为5，加了分隔字符后，长度变为<code>2*5+1</code>，因此原回文串的长度就是新回文串的半径（包括中心）-1。这里是<code>6-1</code>。这样子就可以从新构造的回文串中求得原回文串的长度。接下来介绍，Manacher 如何借助已有的回文串，减少遍历次数。下图展示了一个回文串，假设这是已知边界最右的子回文串，回文串的中心记为 id，右边界记为 maxRight，目前遍历到了 i 处，每个位置的回文串半径用列表 R 储存，途中用红色笔记标出。</p>
-<p><img src="/2018/09/29/Leetcode-5-Longest-Palindromic-Substring/1.png" alt="Manacher&#39;s Algorithms 1"></p>
+<p><img src="/2018/09/30/Leetcode-5-Longest-Palindromic-Substring/1.png" alt="Manacher&#39;s Algorithms 1"></p>
 <p>根据 i 的位置，这里需要分情况讨论：</p>
 <ol>
 <li><strong>假设 i 不在最右回文串以内</strong> </li>
@@ -273,12 +273,12 @@
 <ol>
 <li><strong>j 为中心的回文串超出 id 为中心的回文串</strong></li>
 </ol>
-<p><img src="/2018/09/29/Leetcode-5-Longest-Palindromic-Substring/2.png" alt="Manacher&#39;s Algorithms 1"></p>
+<p><img src="/2018/09/30/Leetcode-5-Longest-Palindromic-Substring/2.png" alt="Manacher&#39;s Algorithms 2"></p>
 <p>此时 <code>R[i] == maxRight-id+1</code>，因为这种情况下 i 为中心的字符串不可能超出 id 为中心的字符串。</p>
 <ol start="2">
 <li><strong>j 为中心的回文串在 id 为中心的回文串以内</strong></li>
 </ol>
-<p><img src="/2018/09/29/Leetcode-5-Longest-Palindromic-Substring/3.png" alt="Manacher&#39;s Algorithms 1"></p>
+<p><img src="/2018/09/30/Leetcode-5-Longest-Palindromic-Substring/3.png" alt="Manacher&#39;s Algorithms 3"></p>
 <p>如果 j 为中心的回文串没有达到 id 为中心的回文串边界，则根据对称性，<code>R[i] == R[j]</code>。反之，先将 <code>R[i] == R[j]</code>，再暴力拓展 i 为中心的回文串，找出回文串的最长范围，因为 i 为中心的回文串可能超出 id 为中心的回文串范围。</p>
 <p>至此，R[i] 的值就可以定下来了。然后我们需要更新 maxRight 和 id。如果 i 为中心的回文串超出了原 id 为中心的回文串范围，我们需要将 id 更新为 i, 将 maxRight 更新为 i 为中心的回文串右边界。最后，我们需要得到的 R[i]，更新最长回文串。</p>
 <p>Manacher’s Algorithms 十分巧妙地利用已经被发现的最右回文串以及它的对称性，极大的缩短了判断 R[i] 所需要的时间，在一些情况下甚至可以不用暴力寻找回文串就可以确定回文串长度，因此时间复杂度得到很好的优化。</p>
@@ -290,7 +290,7 @@
 
 
     <div class="bdsharebuttonbox">
-    <a class="bds_more" data-cmd="more" data-url="https://yuhanshi53.github.io/2018/09/30/Leetcode-5-Longest-Palindromic-Substring/" data-id="cjmnqtftc001fnklxl11cs56p" class="article-share-link"><i class="fas fa-share"></i>     Share</a> 
+    <a class="bds_more" data-cmd="more" data-url="https://yuhanshi53.github.io/2018/09/30/Leetcode-5-Longest-Palindromic-Substring/" data-id="cjmnqx4zq001feslxg0emvl1q" class="article-share-link"><i class="fas fa-share"></i>     Share</a> 
     <!-- <a href="#" class="bds_more" data-cmd="more">share</a> -->
     <!-- <a href="#" class="bds_tsina" data-cmd="tsina" title="Weibo">Weibo</a>
     <a href="#" class="bds_weixin" data-cmd="weixin" title="Wechat">Wechat</a> -->
